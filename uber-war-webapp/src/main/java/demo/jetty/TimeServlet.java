@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/time/")
+@WebServlet("/time")
 public class TimeServlet extends HttpServlet
 {
     private static final TimeZone TZ = TimeZone.getDefault();

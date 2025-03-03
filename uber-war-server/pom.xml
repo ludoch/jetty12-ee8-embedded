@@ -28,11 +28,11 @@
       <artifactId>jetty-ee8-webapp</artifactId>
       <version>${jetty.version}</version>
     </dependency>
-    <dependency>
+    <!--dependency>
       <groupId>org.eclipse.jetty.ee8.websocket</groupId>
       <artifactId>jetty-ee8-websocket-javax-server</artifactId>
       <version>${jetty.version}</version>
-    </dependency>
+    </dependency-->
   </dependencies>
   <build>
     <plugins>

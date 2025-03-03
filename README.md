@@ -1,19 +1,32 @@
 Live/Executable War with Jetty Embedded
 =======================================
 
+Code forked from Example taken from https://github.com/jetty/jetty-examples/tree/12.0.x/embedded/ee10-uber-war
+
+  1. What was changed is moving from jakarta EE10 to javax EE8 to keep original servlet APIs support
+  2. Creation and execution of a `validate.sh` script in the assembly module that creates a staging directory containing a copy of the AppEngine app.yaml configuration as well as the uber WAR renamed as a jar file so that the GCP builder can detect it automatically.
+
+The project is deployable as it in AppEngine, via it's app,yaml file at the top directory:
+
+```shell
+$ cloud auth login
+$ gcloud app deploy --no-promote --version uber-war --project ludo-in-in
+```
+
+
 This project should provide a baseline for those investigating the use of Embedded Jetty
 from the point of view of a Self Executing WAR file.
 
 The project has 4 main parts:
 
- 1. `/thewebapp/` - this is the WAR file, the webapp, as it exists in its native format, with normal maven
+ 1. `/uber-war-webapp/` - this is the WAR file, the webapp, as it exists in its native format, with normal maven
     `<packaging>war</packaging>` and a produced artifact that is just a WAR file that isn't (yet) self-executing.
- 2. `/theserver/` - this is the Embedded Jetty Server `jetty.livewar.ServerMain.main(String args[])` which you 
+ 2. `/uver-war-server/` - this is the Embedded Jetty Server `jetty.livewar.ServerMain.main(String args[])` which you 
     customize to initialize your Jetty server and its WebApp.  This project also is the place where you customize
     for things like JDBC servers libraries, JNDI, logging, etc.   This project produces a uber-jar with all the
     dependencies needed to run the server.  Special care is taken with the `maven-shade-plugin` to merge
     `META-INF/services/` files.
- 3. `/server-bootstrap/` - this contains 2 small classes that sets up a `LiveWarClassLoader` from the content
+ 3. `/uber-war-bootstrap/` - this contains 2 small classes that sets up a `LiveWarClassLoader` from the content
     in the live WAR and then runs `jetty.livewar.ServerMain.main(String args[])` from this new ClassLoader.
     This project also contains the live `META-INF/MANIFEST.MF` that the live WAR will need/use
  4. `/uber-war-assembly/` - this is the project that ties together the above 3 projects into a Live/Executable WAR file.
