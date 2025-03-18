@@ -4,7 +4,7 @@ Live/Executable War with Jetty Embedded
 Code forked from Example taken from https://github.com/jetty/jetty-examples/tree/12.0.x/embedded/ee10-uber-war
 
   1. What was changed is moving from jakarta EE10 to javax EE8 to keep original servlet APIs support
-  2. Creation and execution of a `validate.sh` script in the assembly module that creates a staging directory containing a copy of the AppEngine app.yaml configuration as well as the uber WAR renamed as a jar file so that the GCP builder can detect it automatically.
+  2. Adding servlet login and logout demos for GCP java oauth. These are demo snippets to adapt based on your application.
 
 The project is deployable as it in AppEngine, via it's app.yaml file at the top directory:
 
