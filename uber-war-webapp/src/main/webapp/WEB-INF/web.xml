@@ -7,4 +7,14 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
+   <!--security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Confidential</web-resource-name>
+      <url-pattern>/time</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>INTEGRAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint-->
 </web-app>

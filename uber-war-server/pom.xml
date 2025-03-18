@@ -28,11 +28,38 @@
       <artifactId>jetty-ee8-webapp</artifactId>
       <version>${jetty.version}</version>
     </dependency>
-    <!--dependency>
+          <dependency>
+        <groupId>javax.servlet.jsp.jstl</groupId>
+        <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+        <version>1.2.2</version> <!-- keep -->
+      </dependency>
+        <dependency>
+        <groupId>org.mortbay.jasper</groupId>
+        <artifactId>apache-jsp</artifactId>
+        <version>8.5.70</version> <!--keep-->
+      </dependency>
+      <dependency>
+        <groupId>org.mortbay.jasper</groupId>
+        <artifactId>apache-el</artifactId>
+        <version>8.5.70</version> <!--keep-->
+      </dependency>
+      <!--dependency>
       <groupId>org.eclipse.jetty.ee8.websocket</groupId>
       <artifactId>jetty-ee8-websocket-javax-server</artifactId>
       <version>${jetty.version}</version>
     </dependency-->
+    <dependency>
+      <groupId>com.google.api-client</groupId>
+      <artifactId>google-api-client</artifactId>
+      <version>2.7.2</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.google.flogger</groupId>
+      <artifactId>google-extensions</artifactId>
+      <version>0.8</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

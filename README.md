@@ -6,12 +6,23 @@ Code forked from Example taken from https://github.com/jetty/jetty-examples/tree
   1. What was changed is moving from jakarta EE10 to javax EE8 to keep original servlet APIs support
   2. Creation and execution of a `validate.sh` script in the assembly module that creates a staging directory containing a copy of the AppEngine app.yaml configuration as well as the uber WAR renamed as a jar file so that the GCP builder can detect it automatically.
 
-The project is deployable as it in AppEngine, via it's app,yaml file at the top directory:
+The project is deployable as it in AppEngine, via it's app.yaml file at the top directory:
 
 ```shell
 $ cloud auth login
 $ gcloud app deploy --no-promote --version uber-war --project ludo-in-in
 ```
+
+## Setup the auth layer for AppEngine
+
+
+- In the [Cloud Developers Console](https://cloud.google.com/console) >
+API Manager > Credentials, create a OAuth Client ID for a Web Application.
+You will need to provide an authorized redirect URI
+origin: `https://<PROJECT_ID>.appspot.com/oauth2callback`.
+
+- Replace `CLIENT_ID` and `CLIENT_SECRET` with these values in your
+[app.yaml](/app.yaml)
 
 
 This project should provide a baseline for those investigating the use of Embedded Jetty
