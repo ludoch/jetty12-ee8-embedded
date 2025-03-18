@@ -9,8 +9,16 @@ Code forked from Example taken from https://github.com/jetty/jetty-examples/tree
 The project is deployable as it in AppEngine, via it's app.yaml file at the top directory:
 
 ```shell
+$ git clone https://github.com/ludoch/jetty12-ee8-embedded.git
+$ cd jetty12-ee8-embedded
 $ cloud auth login
-$ gcloud app deploy --no-promote --version uber-war --project ludo-in-in
+$ gcloud app deploy --no-promote --version uber-war --project YOUR_PROJECT-id
+```
+
+See the app.yaml entrypoint pointing to the uber jar built in the assembly module:
+
+```yaml
+entrypoint: java -jar uber-war-assembly/target/uber-war-example.jar
 ```
 
 ## Setup the auth layer for AppEngine
